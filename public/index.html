@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Access</title>
+</head>
+<body>
+    <h1>Secret Access Project 🔐</h1>
+    <h2>Please enter the correct password!</h2>
+
+    <form action="/submit" method="post">
+        <label for="name">Name</label>
+        <input type="text" name="name" required>
+
+        <label for="password">Password</label>
+        <input type="text" name="password" required>
+
+        <input type="checkbox" onclick="togglePassword()"> Show Password
+        <input type="submit" value="Submit">
+    </form>
+
+    <p>
+        You Can see the hint below!! 😎
+        <ul>
+            <li>Starts with a caret symbol (^)</li>
+            <li>Followed by a common term related to information technology</li>
+            <li>Next followed by a combination of numbers (serial numbers- 3 in number) </li>
+            <li>ends with an exclamation mark !</li>
+        </ul>
+    </p>
+</body>
+</html>
