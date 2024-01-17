@@ -7,18 +7,21 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const port = 8000;
-var password = '';
+// var password = '';
 var userAuthenticate = false;
 
 app.use(bodyParser.urlencoded({ extended: true}));
 
 function accessCheck(req, res, next) {
-    password = req.body['password'];
-    if (password == '^Tech123!') {
+    const password = req.body["password"];
+    console.log(req.body);
+    if (password === "^Tech123!") {
         userAuthenticate = true;
     };
     next();
 };
+
+app.use(accessCheck);
 
 
 app.get("/", (req, res) => {
@@ -26,8 +29,14 @@ app.get("/", (req, res) => {
 });
 
 app.post("/submit", (req, res) => {
-    app.use(accessCheck);
-    res.sendFile(__dirname + "/public/access.html");
+    if (userAuthenticate) {
+        res.sendFile(__dirname + "/public/access.html");
+    }
+    else {
+        //res.sendFile(__dirname + "/public/index.html.html");
+        res.redirect("/");
+    }
+    
 });
 
 app.listen(port, () => {
